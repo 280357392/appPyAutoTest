@@ -18,10 +18,12 @@ def pytest_configure(config):
     config._metadata["APP名称信息"] = "短信APP"
     config._metadata["运行环境信息"] = "测试环境"
 
+
 @pytest.mark.optionalhook
 def pytest_html_results_summary(prefix):
     prefix.extend([html.p("所属部门: 测试中心")])
     prefix.extend([html.p("测试人员: 蒙伟")])
+
 
 def pytest_html_results_table_header(cells):
     cells.insert(2, html.th("Description"))
@@ -36,6 +38,7 @@ def pytest_html_results_table_row(report, cells):
     cells.pop()
     cells.pop()
 
+
 def pytest_collection_modifyitems(items):
     """
     测试用例收集完成时，将收集到的name和nodeid的中文显示在控制台上
@@ -44,6 +47,7 @@ def pytest_collection_modifyitems(items):
     for i in items:
         i.name = i.name.encode("utf-8").decode("unicode_escape")
         i._nodeid = i.nodeid.encode("utf-8").decode("unicode_escape")
+
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
@@ -81,7 +85,7 @@ def pytest_runtest_makereport(item):
         else:
             case_name = case_path
         capture_screenshots(case_name)
-        img_path = "image/" + case_name.split("/")[-1]
+        img_path = "image" + os.sep + case_name.split("/")[-1]
         if img_path:
             html = '<div><img src="%s" ' \
                    'alt="screenshot" style="border: 1px solid #e6e6e6;width:304px;height:240px;margin-left:5px;" ' \

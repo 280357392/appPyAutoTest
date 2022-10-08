@@ -1,6 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import TimeoutException
 from time import sleep
 
 
@@ -40,7 +40,7 @@ class Page(object):
         message = '因为该元素被删除或者隐藏了，所以该元素不应存在，by：{}，value：{}'.format(*loc)
         return WebDriverWait(self.app, timeout=timeout).until_not(lambda d: d.find_element(*loc), message)
 
-    def skip_home(self, loc):
+    def skip_home(self, loc=(AppiumBy.ID, 'fab')):
         """
         回到首页
         """

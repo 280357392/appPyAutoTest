@@ -36,7 +36,7 @@ class RunConfig:
         "platformVersion": "11",
         "deviceName": "23121870",
         "appPackage": "com.android.mms",
-        "appActivity": "com.android.mms.ui.MmsTabActivity",
+        "appActivity": ".ui.MmsTabActivity",
         "noReset": True,
         "automationName": "uiautomator2",
         "unicodeKeyboard": True,

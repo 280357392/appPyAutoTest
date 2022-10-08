@@ -1,6 +1,6 @@
 import pytest
 from config import RunConfig
-from page._1_home.mms_page import MmsPage
+from page._1_home.home_page import HomePage
 
 
 # 方法执行顺序：谁先定义谁先执行。
@@ -10,18 +10,13 @@ from page._1_home.mms_page import MmsPage
 class TestMmsPage:
     """短信操作"""
 
-    @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
+    # @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
     def test_add_mms(self, app):
         """
         用例名称：新增一条短信，存为草稿。
         """
         # 回到首页
-        page = MmsPage(app)
-        page.skip_home(page.mms_add_btn_by)
-        page.add_mms('自动化测试咯！！！')
-        # assert
-        page.skip_home(page.mms_add_btn_by)
+        page = HomePage(app)
+        page.add_mms_draft('自动化测试咯！！！')
+        assert page.get_list_item1_text() == '自动化测试咯！！！'
 
-
-if __name__ == '__main__':
-    pytest.main(["-v", "-s", "test_mms.py"])
