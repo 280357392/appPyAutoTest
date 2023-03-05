@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 
@@ -10,11 +9,11 @@ class RunConfig:
     """等于True时表示调试模式，将跳过全部用例。"""
 
     skip_module = [
-        # '_1_home',
+        # 'test_home_page.py',
     ]
     """跳过的模块"""
 
-    cases_path = str(Path.cwd() / 'test_cases')
+    cases_path = str(Path.cwd() / 'cases')
     """测试用例目录"""
 
     new_report = ""
@@ -38,8 +37,8 @@ class RunConfig:
         "appPackage": "com.android.mms",
         "appActivity": ".ui.MmsTabActivity",
         "noReset": True,
-        "automationName": "uiautomator2",
-        "unicodeKeyboard": True,
-        "resetKeyboard": True,
+        "automationName": "UIAutomator2",
+        # "unicodeKeyboard": True,
+        # "resetKeyboard": True,
     }
     """android设备info"""

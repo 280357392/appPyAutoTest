@@ -1,9 +1,11 @@
 import os
 import pytest
+from datetime import datetime
 from py.xml import html
 from appium import webdriver
+from appium.options.android import UiAutomator2Options
+
 from config import RunConfig
-from datetime import datetime
 
 
 def pytest_html_report_title(report):
@@ -19,7 +21,8 @@ def pytest_configure(config):
     config._metadata["运行环境信息"] = "测试环境"
 
 
-@pytest.mark.optionalhook
+# @pytest.mark.optionalhook
+@pytest.hookimpl(optionalhook=True)
 def pytest_html_results_summary(prefix):
     prefix.extend([html.p("所属部门: 测试中心")])
     prefix.extend([html.p("测试人员: 蒙伟")])
@@ -145,7 +148,13 @@ def app():
 
     if RunConfig.driver_type == "android":
         # android
-        driver = webdriver.Remote('http://localhost:4723/wd/hub', RunConfig.androidInfo)
+        options = UiAutomator2Options()
+        options.platformVersion = '11'
+        options.app_package = 'com.android.mms'
+        options.app_activity = '.ui.MmsTabActivity'
+        options.no_reset = True
+        driver = webdriver.Remote('http://localhost:4723/wd/hub', options=options)
+        # driver = webdriver.Remote('http://localhost:4723/wd/hub', RunConfig.androidInfo)
         # driver.implicitly_wait(10)
     elif RunConfig.driver_type == "ios":
         # ios

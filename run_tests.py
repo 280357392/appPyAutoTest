@@ -24,6 +24,8 @@ def mkdir_new_report(new_report, report_rootpath):
             if 'html' in i:
                 index = i.rfind('.')
                 now_time = i[:index]
+        if now_time == '':
+            return
         os.rename(new_report, report_rootpath / now_time)
     os.mkdir(new_report)
     os.mkdir(Path(new_report) / 'image')
@@ -35,7 +37,7 @@ def run(m):
     if m is None or m == "run":
         logger.info("回归模式，开始执行✈✈！")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
-        report_rootpath = Path.cwd() / 'test_report'
+        report_rootpath = Path.cwd() / 'report'
         new_report = str(report_rootpath / 'new_report')
         RunConfig.new_report = new_report
         mkdir_new_report(new_report, report_rootpath)
