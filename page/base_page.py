@@ -1,3 +1,4 @@
+from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from appium.webdriver.common.appiumby import AppiumBy
@@ -10,7 +11,7 @@ class BasePage(object):
     def __init__(self, app: WebDriver):
         self.app = app
 
-    def find_element(self, loc, timeout=5):
+    def find_element(self, loc, timeout=5) -> WebElement:
         """
         获取页面某个元素的对象。\n
         :param loc: 元组，如：(AppiumBy.ID, u"kw")
@@ -20,7 +21,7 @@ class BasePage(object):
         message = '未查找到该元素，by：{}，value：{}'.format(*loc)
         return WebDriverWait(self.app, timeout=timeout).until(lambda d: d.find_element(*loc), message)
 
-    def find_elements(self, loc, timeout=5):
+    def find_elements(self, loc, timeout=5) -> WebElement:
         """
         获取页面元素
         :param loc: 元组，如(AppiumBy.ID, "id")

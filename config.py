@@ -5,15 +5,16 @@ class RunConfig:
     """
     运行测试配置
     """
+
     debug = True
-    """等于True时表示调试模式，将跳过全部用例。"""
+    """等于True时表示调试模式，将跳过全部用例，调试单条测试用例时，注释其装饰器。"""
 
     skip_module = [
         # 'test_home_page.py',
     ]
-    """跳过的模块"""
+    """跳过测试用例模块"""
 
-    cases_path = str(Path.cwd() / 'cases')
+    case_path = str(Path.cwd() / 'case')
     """测试用例目录"""
 
     new_report = ""
@@ -30,15 +31,14 @@ class RunConfig:
     driver = None
     """app默认驱动"""
 
-    androidInfo = {
-        "platformName": "Android",
-        "platformVersion": "11",
-        "deviceName": "23121870",
-        "appPackage": "com.android.mms",
-        "appActivity": ".ui.MmsTabActivity",
-        "noReset": True,
-        "automationName": "UIAutomator2",
+    android_info = {
+        # "platformName": "Android",
+        # "platformVersion": "11",
+        # "deviceName": "23121870",
+        # "appPackage": "com.android.mms",
+        # "appActivity": "ui.MmsTabActivity",
+        # "noReset": True,
+        # "automationName": "UIAutomator2",
         # "unicodeKeyboard": True,
         # "resetKeyboard": True,
     }
-    """android设备info"""

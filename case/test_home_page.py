@@ -1,6 +1,5 @@
 import pytest
 from appium.webdriver.webdriver import WebDriver
-from time import sleep
 
 from config import RunConfig
 from page.home.home_page import HomePage
@@ -13,7 +12,7 @@ from page.home.home_page import HomePage
 class TestHomePage:
     """home模块"""
 
-    # @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
+    @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
     def test_add_mms(self, app: WebDriver):
         """
         用例名称：新增一条短信，存为草稿。
@@ -23,7 +22,3 @@ class TestHomePage:
         assert '信息已存为草稿。' == home_page.get_toast_text()  # 优先判断
         assert '自动化测试咯' == home_page.get_list_item1_text()
 
-    @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
-    def test_001(self, app: WebDriver):
-        app.start_activity('com.by.ferrari', 'ui.FlatMessageListActivity')
-        sleep(5)

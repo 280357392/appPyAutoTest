@@ -42,7 +42,7 @@ def run(m):
         RunConfig.new_report = new_report
         mkdir_new_report(new_report, report_rootpath)
         html_report = os.path.join(new_report, "{}.html".format(now_time))
-        pytest.main(["-v", RunConfig.cases_path,  # 测试用例目录。
+        pytest.main(["-v", RunConfig.case_path,  # 测试用例目录。
                      "--html=" + html_report,  # 测试报告文件路径。
                      "--self-contained-html",  # 合并css到html文件中。
                      "--maxfail", RunConfig.max_fail,  # 失败N次后停止测试。
@@ -52,7 +52,7 @@ def run(m):
     elif m == "debug":
         # 不会产生报告
         print("debug模式，开始执行！")
-        pytest.main(["-v", "-s", RunConfig.cases_path])
+        pytest.main(["-v", "-s", RunConfig.case_path])
         print("运行结束！！")
 
 

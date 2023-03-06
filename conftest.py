@@ -147,20 +147,18 @@ def app():
     global driver
 
     if RunConfig.driver_type == "android":
-        # android
         options = UiAutomator2Options()
         options.platformVersion = '11'
-        options.app_package = 'com.android.mms'
-        options.app_activity = '.ui.MmsTabActivity'
+        # options.app_package = 'com.android.mms'
+        # options.app_activity = 'ui.MmsTabActivity'
+        options.app_package = 'com.by.ferrari'
+        options.app_activity = 'com.by.fans.main.MainActivity'
         options.no_reset = True
         driver = webdriver.Remote('http://localhost:4723/wd/hub', options=options)
-        # driver = webdriver.Remote('http://localhost:4723/wd/hub', RunConfig.androidInfo)
-        # driver.implicitly_wait(10)
+        # driver = webdriver.Remote('http://localhost:4723/wd/hub', RunConfig.android_info)
     elif RunConfig.driver_type == "ios":
-        # ios
         raise NameError("driver驱动类型定义错误！")
     else:
-        # 其他
         raise NameError("driver驱动类型定义错误！")
     RunConfig.driver = driver
     return driver
@@ -173,7 +171,3 @@ def app_close():
     """
     yield driver
     driver.quit()
-
-
-if __name__ == "__main__":
-    capture_screenshots("test_dir/test_baidu_search.test_search_python.png")
