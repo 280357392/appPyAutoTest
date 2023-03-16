@@ -149,10 +149,18 @@ def app():
     if RunConfig.driver_type == "android":
         options = UiAutomator2Options()
         options.platformVersion = '11'
+        # 短信
         # options.app_package = 'com.android.mms'
         # options.app_activity = 'ui.MmsTabActivity'
-        options.app_package = 'com.by.ferrari'
-        options.app_activity = 'com.by.fans.main.MainActivity'
+
+        # 法拉利
+        # options.app_package = 'com.by.ferrari'
+        # options.app_activity = 'com.by.fans.main.MainActivity'
+
+        # 谷歌浏览器
+        options.app_package = 'com.android.chrome'
+        options.app_activity = 'com.google.android.apps.chrome.Main'
+
         options.no_reset = True
         driver = webdriver.Remote('http://localhost:4723/wd/hub', options=options)
         # driver = webdriver.Remote('http://localhost:4723/wd/hub', RunConfig.android_info)

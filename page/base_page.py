@@ -1,3 +1,4 @@
+from typing import Union, List
 from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -21,7 +22,7 @@ class BasePage(object):
         message = '未查找到该元素，by：{}，value：{}'.format(*loc)
         return WebDriverWait(self.app, timeout=timeout).until(lambda d: d.find_element(*loc), message)
 
-    def find_elements(self, loc, timeout=5) -> WebElement:
+    def find_elements(self, loc, timeout=5) -> Union[List[WebElement], list]:
         """
         获取页面元素
         :param loc: 元组，如(AppiumBy.ID, "id")
