@@ -10,7 +10,7 @@ class RunConfig:
     """等于True时表示调试模式，将跳过全部用例，调试单条测试用例时，注释其装饰器。"""
 
     skip_module = [
-        # 'test_home_page.py',
+        # 'test_home.py',
     ]
     """跳过测试用例模块"""
 

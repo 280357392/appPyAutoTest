@@ -7,9 +7,9 @@ from page.home.home_page import HomePage
 
 # 方法执行顺序：谁先定义谁先执行。
 # 用例之间不应相互依赖。
-@pytest.mark.skipif('test_home_page.py' in RunConfig.skip_module, reason="跳过的模块")
+@pytest.mark.skipif('test_home.py' in RunConfig.skip_module, reason="跳过的模块")
 @pytest.mark.run(order=1)
-class TestHomePage:
+class TestHome:
     """home模块"""
 
     @pytest.mark.skipif(RunConfig.debug, reason="debug模式跳过用例")
